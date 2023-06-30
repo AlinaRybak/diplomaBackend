@@ -5,8 +5,8 @@ services:
       - key: SPRING_PROFILES_ACTIVE
         value: production
     buildCommand:
-      - ./maven-wrapper.jar clean install
-    startCommand: ./mvnw spring-boot:run
+      - ./mvw clean install
+    startCommand: ./mvw spring-boot:run
     healthCheckPath: /
     httpPort: 8080
     disk:
@@ -14,4 +14,5 @@ services:
     routes:
       - src: /
         dest: diploma-backend:8080
+
 
