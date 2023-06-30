@@ -4,7 +4,9 @@ services:
     env:
       - key: SPRING_PROFILES_ACTIVE
         value: production
-    buildCommand: ./mvnw clean install
+    buildCommand:
+      - install: sudo apt-get install -y maven
+      - mvn clean install
     startCommand: ./mvnw spring-boot:run
     healthCheckPath: /
     httpPort: 8080
