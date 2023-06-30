@@ -4,9 +4,8 @@ services:
     env:
       - key: SPRING_PROFILES_ACTIVE
         value: production
-    buildCommand:
-      - ./mvw clean install
-    startCommand: ./mvw spring-boot:run
+    buildCommand: ./mvnw clean install
+    startCommand: ./mvnw spring-boot:run
     healthCheckPath: /
     httpPort: 8080
     disk:
@@ -14,5 +13,6 @@ services:
     routes:
       - src: /
         dest: diploma-backend:8080
+
 
 
