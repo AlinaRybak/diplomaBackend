@@ -1,5 +1,5 @@
 {
-  "name": "heroku-diploma-app",
+  "name": "heroku-green-products-app",
   "buildpacks": [
     {
       "url": "heroku/maven"
