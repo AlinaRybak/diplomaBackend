@@ -1,0 +1,8 @@
+{
+  "name": "heroku-diploma-app",
+  "buildpacks": [
+    {
+      "url": "heroku/maven"
+    }
+  ]
+}
