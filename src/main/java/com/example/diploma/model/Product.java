@@ -1,10 +1,6 @@
 package com.example.diploma.model;
 import jakarta.persistence.*;
-import jakarta.servlet.ServletContext;
 import lombok.Data;
-import org.springframework.web.multipart.MultipartFile;
-import java.io.File;
-import java.io.IOException;
 
 @Entity
 @Table(name = "products")

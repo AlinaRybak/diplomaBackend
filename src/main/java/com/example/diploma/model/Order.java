@@ -1,6 +1,6 @@
 package com.example.diploma.model;
-import jakarta.persistence.*;
 import lombok.Data;
+import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
@@ -15,7 +15,7 @@ public class Order {
     private String email;
     private String phone;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "order_id")
-    private List<ProductOrder> products;
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+    private List<ProductOrder> productOrders;
 }
+
