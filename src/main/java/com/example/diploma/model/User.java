@@ -1,11 +1,7 @@
 package com.example.diploma.model;
+
 import jakarta.persistence.*;
 import lombok.Data;
-
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
-
 
 @Entity
 @Table(name = "users")
@@ -15,17 +11,37 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Email(message = "Invalid email address")
+    @Column(nullable = false, unique = true)
     private String email;
 
-    @Pattern(regexp = "\\d{10}", message = "Phone number must be 10 digits")
-    private String phoneNumber;
-
-    @NotBlank(message = "Password is required")
+    @Column(nullable = false)
     private String password;
 
-    @NotBlank(message = "Username is required")
-    private String username;
+    @Column(nullable = false)
+    private String name;
+
+    @Column(nullable = false, unique = true)
+    private String phoneNumber;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "profile_id")
+    private Profile profile;
+
+    public void changePassword(String newPassword) {
+    }
+
+    public boolean checkPassword(String passwordToCheck) {
+        return passwordToCheck.equals(this.password);
+    }
+
+    public Profile getProfile() {
+        return this.profile;
+    }
+
+    public void updateProfile(Profile newProfile) {
+        this.profile = newProfile;
+    }
+
+    public void deleteAccount() {
+    }
 }
-
-
