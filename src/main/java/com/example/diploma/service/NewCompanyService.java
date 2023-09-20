@@ -5,6 +5,8 @@ import com.example.diploma.repository.NewCompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class NewCompanyService {
 
@@ -25,6 +27,12 @@ public class NewCompanyService {
 
     public void deleteNewCompany(Long id) {
         newCompanyRepository.deleteById(id);
+    }
+
+    public List<NewCompany> getCompanyInfo() {
+        List<NewCompany> companyInfoList = newCompanyRepository.findAll();
+
+        return companyInfoList;
     }
 
 }
