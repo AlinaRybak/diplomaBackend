@@ -1,11 +1,13 @@
 package com.example.diploma.service;
 import com.example.diploma.model.NewCompany;
+import com.example.diploma.model.Product;
 import com.example.diploma.model.User;
 import com.example.diploma.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
     public class UserService {
@@ -33,5 +35,14 @@ import java.util.List;
 
             return userRepository.save(user);
         }
+
+    public Optional<User> getUserById(Long id) {
+
+        return userRepository.findById(id);
+    }
+
+    public User findByNameAndPassword(String name, String password) {
+        return userRepository.findByNameAndPassword(name, password);
+    }
     }
 
