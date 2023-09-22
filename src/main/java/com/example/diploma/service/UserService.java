@@ -1,11 +1,11 @@
 package com.example.diploma.service;
-import com.example.diploma.model.NewCompany;
-import com.example.diploma.model.Product;
 import com.example.diploma.model.User;
 import com.example.diploma.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.security.Keys;
 import java.util.List;
 import java.util.Optional;
 
@@ -44,5 +44,16 @@ import java.util.Optional;
     public User findByNameAndPassword(String name, String password) {
         return userRepository.findByNameAndPassword(name, password);
     }
+    public String generateToken(User user) {
+            String secretKey = "key";
+
+            String token = Jwts.builder()
+                    .setSubject(user.getName())
+                    .claim("userId", user.getId())
+                    .signWith(Keys.hmacShaKeyFor(secretKey.getBytes()), SignatureAlgorithm.HS256)
+                    .compact();
+
+            return token;
+        }
     }
 
