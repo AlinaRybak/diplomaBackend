@@ -1,5 +1,4 @@
 package com.example.diploma.controller;
-import com.example.diploma.model.LoginResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -38,12 +37,10 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<LoginResponse> checkUser(@RequestBody User user) {
+    public ResponseEntity<User> checkUser(@RequestBody User user) {
         User existingUser = userService.findByNameAndPassword(user.getName(), user.getPassword());
         if (existingUser != null) {
-            String token = userService.generateToken(existingUser);
-            LoginResponse response = new LoginResponse(existingUser, token);
-            return ResponseEntity.ok(response);
+            return ResponseEntity.ok(existingUser);
         } else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
         }
