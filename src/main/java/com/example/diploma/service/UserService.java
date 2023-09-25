@@ -15,8 +15,8 @@ import java.util.Optional;
             this.userRepository = userRepository;
         }
 
-    public User save(User user) {
-        if (user.getPhoneNumber() == null) {
+        public User save(User user) {
+        if (user.getPhoneNumber() == null || user.getPhoneNumber().isEmpty()) {
             user.setPhoneNumber("DEFAULT_PHONE_NUMBER");
         }
         return userRepository.save(user);
