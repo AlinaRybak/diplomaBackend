@@ -1,10 +1,8 @@
 package com.example.diploma.service;
-
 import com.example.diploma.model.NewCompany;
 import com.example.diploma.repository.NewCompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service

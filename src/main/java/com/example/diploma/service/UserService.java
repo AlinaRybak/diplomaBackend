@@ -3,7 +3,6 @@ import com.example.diploma.model.User;
 import com.example.diploma.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -16,9 +15,12 @@ import java.util.Optional;
             this.userRepository = userRepository;
         }
 
-        public User save(User user) {
-            return userRepository.save(user);
+    public User save(User user) {
+        if (user.getPhoneNumber() == null) {
+            user.setPhoneNumber("DEFAULT_PHONE_NUMBER");
         }
+        return userRepository.save(user);
+    }
 
     public List<User> getUsersInfo() {
         List<User> userInfoList = userRepository.findAll();
