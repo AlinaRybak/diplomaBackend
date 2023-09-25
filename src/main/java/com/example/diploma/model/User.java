@@ -13,5 +13,13 @@ import lombok.Data;
         private String phoneNumber;
         private String email;
         private String password;
+
+        public String getPhoneNumber() {
+            return phoneNumber;
+        }
+
+        public void setPhoneNumber(String phoneNumber) {
+            this.phoneNumber = phoneNumber;
+        }
     }
 
